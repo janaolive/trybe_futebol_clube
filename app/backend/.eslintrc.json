@@ -16,7 +16,9 @@
   "parserOptions": {
     "ecmaVersion": 2019,
     "sourceType": "module",
-    "project": "./tsconfig.json"
+    "project": ["./tsconfig.json"],
+    "tsconfigRootDir": "./"
+    // fonte de pesquisa: https://trybecourse.slack.com/archives/C02L83FCV4K/p1659127989106209?thread_ts=1659121630.742239&cid=C02L83FCV4K
   },
   "plugins": [
     "@typescript-eslint",
