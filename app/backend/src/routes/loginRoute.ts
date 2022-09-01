@@ -1,9 +1,9 @@
-// import { Router } from 'express';
-// import LoginController from '../controllers/LoginController';
+import { Router } from 'express';
+import LoginController from '../controllers/LoginController';
 
-// const loginRoute = Router();
+const loginRoute = Router();
 
-// loginRoute.post('/', LoginController.login);
-// loginRoute.get('/validate', LoginController.auth);
+loginRoute.post('/', LoginController.login);
+loginRoute.get('/validate', LoginController.validateAuth);
 
-// export default loginRoute;
+export default loginRoute;
