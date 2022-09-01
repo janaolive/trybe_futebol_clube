@@ -9,15 +9,15 @@ import { Ilogin } from '../interfaces';
 const secret = process.env.JWT_SECRET || 'jwt_secret';
 
 class LoginService {
-  static async findByEmail(eml: string, pass: string): Promise<string> {
-    if (!eml || !pass) {
+  static async findByEmail(mail: string, password: string): Promise<string> {
+    if (!mail || !password) {
       throw new BadRequestError('All fields must be filled');
     }
-    const user = await Users.findOne({ where: { email: eml } });
+    const user = await Users.findOne({ where: { email: mail } });
     if (!user) {
       throw new UnauthorizedError('Incorrect email or password');
     }
-    const encryptPassword = await bcrypt.compare(pass, user.password);
+    const encryptPassword = await bcrypt.compare(password, user.password);
     if (!encryptPassword) {
       throw new UnauthorizedError('Incorrect email or password');
     }
