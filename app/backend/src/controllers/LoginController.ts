@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import NotFoundError from '../middlewares/NotFoundError';
-import LoginService from '../services/loginServices';
+import LoginService from '../services/loginService';
 
 class LoginController {
   static async login(req: Request, res: Response) {
