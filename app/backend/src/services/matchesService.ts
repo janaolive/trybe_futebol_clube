@@ -5,7 +5,7 @@ import { IGoal, INewMatch } from '../interfaces/index';
 import NotFoundError from '../middlewares/NotFoundError';
 import UnauthorizedError from '../middlewares/UnauthorizedError';
 
-const secret = process.env.JWT_SECRET || 'secret';
+const secret = process.env.JWT_SECRET || 'jwt_secret';
 
 class MatchesService {
   static async getAll(): Promise<Matches[]> {

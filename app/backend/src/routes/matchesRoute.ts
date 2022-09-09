@@ -2,9 +2,9 @@ import { Router } from 'express'; import MatchesController from '../controllers/
 
 const matchesRoute = Router();
 
-matchesRoute.get('/', MatchesController.getAll);
-matchesRoute.post('/', MatchesController.addMatch);
+matchesRoute.get('/', MatchesController.getMatches);
+matchesRoute.post('/', MatchesController.addNewMatch);
 matchesRoute.patch('/:id/finish', MatchesController.setProgress);
-matchesRoute.patch('/:id', MatchesController.updateMatch);
+matchesRoute.patch('/:id', MatchesController.changeMatch);
 
 export default matchesRoute;

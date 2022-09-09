@@ -3,7 +3,7 @@ import UnauthorizedError from '../middlewares/UnauthorizedError';
 import MatchesService from '../services/matchesService';
 
 class MatchesController {
-  static async getAll(req: Request, res: Response) {
+  static async getMatches(req: Request, res: Response) {
     const { inProgress } = req.query;
     if (inProgress) {
       const progressMatches = await MatchesService.getMatchProgress(inProgress === 'true');
@@ -13,14 +13,14 @@ class MatchesController {
     res.status(200).json(matches);
   }
 
-  static async updateMatch(req: Request, res: Response) {
+  static async changeMatch(req: Request, res: Response) {
     const { id } = req.params;
-    const idNumber = Number(id);
-    const matchUpdated = await MatchesService.updateMatch(req.body, idNumber);
-    res.status(200).json(matchUpdated);
+    const numberId = Number(id);
+    const matchChanged = await MatchesService.updateMatch(req.body, numberId);
+    res.status(200).json(matchChanged);
   }
 
-  static async addMatch(req: Request, res: Response) {
+  static async addNewMatch(req: Request, res: Response) {
     const { authorization } = req.headers;
     if (!authorization) {
       throw new UnauthorizedError('Token must be a valid token');
