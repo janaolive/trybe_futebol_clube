@@ -3,7 +3,7 @@ import UnauthorizedError from '../middlewares/UnauthorizedError';
 import MatchesService from '../services/matchesService';
 
 class MatchesController {
-  static async getMatches(req: Request, res: Response) {
+  static async getAll(req: Request, res: Response) {
     const { inProgress } = req.query;
     if (inProgress) {
       const progressMatches = await MatchesService.getMatchProgress(inProgress === 'true');
@@ -13,7 +13,7 @@ class MatchesController {
     res.status(200).json(matches);
   }
 
-  static async changeMatch(req: Request, res: Response) {
+  static async updateMatch(req: Request, res: Response) {
     const { id } = req.params;
     const numberId = Number(id);
     const matchChanged = await MatchesService.updateMatch(req.body, numberId);
@@ -27,12 +27,12 @@ class MatchesController {
     }
     const token = await MatchesService.checkToken(authorization);
     if (token) {
-      const newMatch = await MatchesService.addMatch(req.body);
+      const newMatch = await MatchesService.addNewMatch(req.body);
       res.status(200).json(newMatch);
     }
   }
 
-  static async setProgress(req: Request, res: Response) {
+  static async updateProgress(req: Request, res: Response) {
     const { id } = req.params;
     const matchId = Number(id);
     const message = await MatchesService.updateProgress(matchId);

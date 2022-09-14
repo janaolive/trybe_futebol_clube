@@ -51,12 +51,12 @@ class MatchesService {
     return matches;
   }
 
-  static async addMatch(data: INewMatch): Promise<Matches | boolean> {
+  static async addNewMatch(data: INewMatch): Promise<Matches | boolean> {
     const { homeTeam, awayTeam, homeTeamGoals, awayTeamGoals } = data;
     const checkHomeTeam = await Teams.findOne({ where: { id: homeTeam } });
-    const checkawayTeam = await Teams.findOne({ where: { id: awayTeam } });
+    const checkAwayTeam = await Teams.findOne({ where: { id: awayTeam } });
 
-    if (!checkHomeTeam || !checkawayTeam) {
+    if (!checkHomeTeam || !checkAwayTeam) {
       throw new NotFoundError('There is no team with such id!');
     }
     if (homeTeam === awayTeam) {
