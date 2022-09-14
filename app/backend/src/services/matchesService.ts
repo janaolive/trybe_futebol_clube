@@ -8,7 +8,7 @@ import UnauthorizedError from '../middlewares/UnauthorizedError';
 const secret = process.env.JWT_SECRET || 'jwt_secret';
 
 class MatchesService {
-  static async getAll(): Promise<Matches[]> {
+  static async getAllMatches(): Promise<Matches[]> {
     const matches = await Matches.findAll({
       include: [{
         model: Teams,
@@ -25,7 +25,7 @@ class MatchesService {
     return matches;
   }
 
-  static async updateMatch(data: IGoal, id: number): Promise<object> {
+  static async updateMatchById(data: IGoal, id: number): Promise<object> {
     const { homeTeamGoals, awayTeamGoals } = data;
     await Matches.update(
       { homeTeamGoals, awayTeamGoals },
@@ -34,7 +34,7 @@ class MatchesService {
     return { message: 'sucessfuly updated!' };
   }
 
-  static async getMatchProgress(inProgress: boolean):Promise<Matches[]> {
+  static async getMatchInProgress(inProgress: boolean):Promise<Matches[]> {
     const matches = await Matches.findAll({
       include: [{
         model: Teams,

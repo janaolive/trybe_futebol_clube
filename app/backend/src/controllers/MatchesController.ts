@@ -6,17 +6,17 @@ class MatchesController {
   static async getAll(req: Request, res: Response) {
     const { inProgress } = req.query;
     if (inProgress) {
-      const progressMatches = await MatchesService.getMatchProgress(inProgress === 'true');
-      res.status(200).json(progressMatches);
+      const matchInProgress = await MatchesService.getMatchInProgress(inProgress === 'true');
+      res.status(200).json(matchInProgress);
     }
-    const matches = await MatchesService.getAll();
+    const matches = await MatchesService.getAllMatches();
     res.status(200).json(matches);
   }
 
-  static async updateMatch(req: Request, res: Response) {
+  static async updateMatchById(req: Request, res: Response) {
     const { id } = req.params;
     const numberId = Number(id);
-    const matchChanged = await MatchesService.updateMatch(req.body, numberId);
+    const matchChanged = await MatchesService.updateMatchById(req.body, numberId);
     res.status(200).json(matchChanged);
   }
 
