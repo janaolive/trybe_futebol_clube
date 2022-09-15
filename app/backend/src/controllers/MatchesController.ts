@@ -29,7 +29,7 @@ class MatchesController {
     const token = await MatchesService.checkToken(authorization);
     if (token) {
       const newMatch = await MatchesService.addNewMatch(req.body);
-      res.status(200).json(newMatch);
+      res.status(201).json(newMatch);
     }
   }
 
