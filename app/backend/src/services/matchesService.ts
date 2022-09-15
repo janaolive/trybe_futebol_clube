@@ -6,7 +6,6 @@ import NotFoundError from '../middlewares/NotFoundError';
 import UnauthorizedError from '../middlewares/UnauthorizedError';
 
 const secret = process.env.JWT_SECRET || 'jwt_secret';
-
 class MatchesService {
   static async getAllMatches(): Promise<Matches[]> {
     const matches = await Matches.findAll({

@@ -1,4 +1,5 @@
 import { Request, Response } from 'express';
+// import NotFoundError from '../middlewares/NotFoundError';
 import UnauthorizedError from '../middlewares/UnauthorizedError';
 import MatchesService from '../services/matchesService';
 
