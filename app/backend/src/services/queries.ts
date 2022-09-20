@@ -54,7 +54,7 @@ ORDER BY totalPoints DESC, totalVictories DESC, goalsBalance DESC, goalsFavor DE
 
 const queryGeneralRanking = `SELECT
     t.id,
-    t.team_name,
+    t.team_name as name,
     ((c.totalVictories + v.totalVictories) * 3) + (c.totalDraws + v.totalDraws) as totalPoints,
     c.totalGames + v.totalGames AS totalGames,
     c.totalVictories + v.totalVictories AS totalVictories,
