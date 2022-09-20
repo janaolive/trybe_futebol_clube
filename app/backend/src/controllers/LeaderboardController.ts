@@ -3,8 +3,8 @@ import LeaderboardService from '../services/leaderboardService';
 
 class LeaderboardController {
   static async getAllHome(req: Request, res: Response) {
-    const leaderboard = await LeaderboardService.getAllHome();
-    res.status(200).json(leaderboard);
+    const homeTeams = await LeaderboardService.getAllHome();
+    res.status(200).json(homeTeams);
   }
 
   static async getAllAway(req: Request, res: Response) {
@@ -13,8 +13,8 @@ class LeaderboardController {
   }
 
   static async getAll(req: Request, res: Response) {
-    const homeTeams = await LeaderboardService.getAll();
-    res.status(200).json(homeTeams);
+    const leaderboard = await LeaderboardService.getAll();
+    res.status(200).json(leaderboard);
   }
 }
 
