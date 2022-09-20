@@ -74,10 +74,10 @@ LEFT JOIN
         SUM(m.home_team_goals) AS totalGoals,
         SUM(m.home_team_goals > m.away_team_goals) AS totalVictories,
         SUM(m.away_team_goals = m.home_team_goals) AS totalDraws,
-        SUM(m.away_team_goals < m.home_team_goals) AS totalLosses,
+        SUM(m.home_team_goals < m.away_team_goals) AS totalLosses,
         SUM(m.away_team_goals) AS goalsFavor,
         SUM(m.home_team_goals) AS goalsOwn,
-        SUM(m.away_team_goals - m.home_team_goals) AS goalsBalance
+        SUM(m.home_team_goals - m.away_team_goals) AS goalsBalance
     FROM TRYBE_FUTEBOL_CLUBE.teams AS t
     LEFT JOIN TRYBE_FUTEBOL_CLUBE.matches AS m ON t.id = m.home_team
     WHERE m.in_progress = 0
